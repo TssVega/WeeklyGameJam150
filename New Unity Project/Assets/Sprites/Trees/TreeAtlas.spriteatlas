@@ -1,0 +1,90 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: TreeAtlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 0
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 0
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: 73be5be5cccba0f46b4e2c04bb35495d, type: 3}
+    - {fileID: 2800000, guid: ba208c7e39f20ef44a57e949e333268d, type: 3}
+    - {fileID: 2800000, guid: d17487d6c012a5e48b73de928b6c52c7, type: 3}
+    - {fileID: 2800000, guid: e289de3d12f2fde4aa5861710be64e24, type: 3}
+    - {fileID: 2800000, guid: 0ebf8e4aee685bb4bb62fc6a9ef5e456, type: 3}
+    - {fileID: 2800000, guid: 835c2a8a84bef3144ad0ceaed59a224f, type: 3}
+    - {fileID: 2800000, guid: fed9ee11a36ccf947b83891ac4226a39, type: 3}
+    - {fileID: 2800000, guid: 91bb13a54693eeb45b30547eb2556bd8, type: 3}
+    - {fileID: 2800000, guid: 15a413c9c515bb44c907fc97cd5acd96, type: 3}
+    - {fileID: 2800000, guid: 4e1c4ef8bfb2c7440b6ab668cd7db328, type: 3}
+    - {fileID: 2800000, guid: 80ccb1baa2b0e1b4480d0feabde7eef7, type: 3}
+    - {fileID: 2800000, guid: 9bf0cc3035d0e5d4d938786c2c5eab44, type: 3}
+    - {fileID: 2800000, guid: ea18ac1c3d3d70c4abb2fa63dc6a79ae, type: 3}
+    totalSpriteSurfaceArea: 173665
+    bindAsDefault: 1
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 9bf0cc3035d0e5d4d938786c2c5eab44, type: 3}
+  - {fileID: 21300000, guid: fed9ee11a36ccf947b83891ac4226a39, type: 3}
+  - {fileID: 21300000, guid: 91bb13a54693eeb45b30547eb2556bd8, type: 3}
+  - {fileID: 21300000, guid: 73be5be5cccba0f46b4e2c04bb35495d, type: 3}
+  - {fileID: 21300000, guid: d17487d6c012a5e48b73de928b6c52c7, type: 3}
+  - {fileID: 21300000, guid: 4e1c4ef8bfb2c7440b6ab668cd7db328, type: 3}
+  - {fileID: 21300000, guid: 15a413c9c515bb44c907fc97cd5acd96, type: 3}
+  - {fileID: 21300000, guid: 0ebf8e4aee685bb4bb62fc6a9ef5e456, type: 3}
+  - {fileID: 21300000, guid: 835c2a8a84bef3144ad0ceaed59a224f, type: 3}
+  - {fileID: 21300000, guid: 80ccb1baa2b0e1b4480d0feabde7eef7, type: 3}
+  - {fileID: 21300000, guid: ea18ac1c3d3d70c4abb2fa63dc6a79ae, type: 3}
+  - {fileID: 21300000, guid: e289de3d12f2fde4aa5861710be64e24, type: 3}
+  - {fileID: 21300000, guid: ba208c7e39f20ef44a57e949e333268d, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - tree934590102
+  - tree296030296
+  - tree383332252
+  - tree22484152
+  - tree88810128
+  - tree834020459
+  - tree588665305
+  - tree207120548
+  - tree249659329
+  - tree903949349
+  - tree980075391
+  - tree162615452
+  - tree120733112
+  m_Tag: TreeAtlas
+  m_IsVariant: 0

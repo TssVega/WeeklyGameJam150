@@ -1,0 +1,96 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Graphics
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 0
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 0
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: 83ca4d23f93a9ba4099520409e1a66e6, type: 3}
+    - {fileID: 2800000, guid: f2950976f8937c441b06b93135f71d5a, type: 3}
+    - {fileID: 2800000, guid: 95e71e7a3a375cf48bbe38ac9fe66afa, type: 3}
+    - {fileID: 2800000, guid: 7628a2f57d709ac4ca7034522afc6440, type: 3}
+    - {fileID: 2800000, guid: 3e705593324cb9344b42d5549b252f4c, type: 3}
+    totalSpriteSurfaceArea: 20480
+    bindAsDefault: 1
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: -4713091289263263070, guid: 83ca4d23f93a9ba4099520409e1a66e6, type: 3}
+  - {fileID: 8947408791622433843, guid: 83ca4d23f93a9ba4099520409e1a66e6, type: 3}
+  - {fileID: 2177602273920956487, guid: 83ca4d23f93a9ba4099520409e1a66e6, type: 3}
+  - {fileID: -5645980114763723433, guid: 83ca4d23f93a9ba4099520409e1a66e6, type: 3}
+  - {fileID: 6682738439518977790, guid: 3e705593324cb9344b42d5549b252f4c, type: 3}
+  - {fileID: -4970410492042351176, guid: 3e705593324cb9344b42d5549b252f4c, type: 3}
+  - {fileID: -562605217060080129, guid: 3e705593324cb9344b42d5549b252f4c, type: 3}
+  - {fileID: -5930158604282628446, guid: 3e705593324cb9344b42d5549b252f4c, type: 3}
+  - {fileID: -3543039480774893336, guid: 7628a2f57d709ac4ca7034522afc6440, type: 3}
+  - {fileID: -2798446716505497227, guid: 7628a2f57d709ac4ca7034522afc6440, type: 3}
+  - {fileID: -3505344249828319880, guid: 7628a2f57d709ac4ca7034522afc6440, type: 3}
+  - {fileID: -2663972143372386768, guid: 7628a2f57d709ac4ca7034522afc6440, type: 3}
+  - {fileID: -3387478527075654864, guid: f2950976f8937c441b06b93135f71d5a, type: 3}
+  - {fileID: -3154150011874791226, guid: f2950976f8937c441b06b93135f71d5a, type: 3}
+  - {fileID: 4837840602407752856, guid: f2950976f8937c441b06b93135f71d5a, type: 3}
+  - {fileID: -7808734593389313954, guid: f2950976f8937c441b06b93135f71d5a, type: 3}
+  - {fileID: 5086050614094376806, guid: 95e71e7a3a375cf48bbe38ac9fe66afa, type: 3}
+  - {fileID: 8508076330584263242, guid: 95e71e7a3a375cf48bbe38ac9fe66afa, type: 3}
+  - {fileID: 1172746796854112078, guid: 95e71e7a3a375cf48bbe38ac9fe66afa, type: 3}
+  - {fileID: 1453730230956404686, guid: 95e71e7a3a375cf48bbe38ac9fe66afa, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - NightSky0
+  - NightSky1
+  - DaySky
+  - SunsetSky
+  - Road
+  - Water
+  - Desert
+  - Grass
+  - DeepBlue
+  - DeepTiles_3
+  - Brown
+  - LightCoffee
+  - Tank
+  - Ufo
+  - Soldier
+  - Jet
+  - Cloud0
+  - Cloud1
+  - Sun
+  - Moon
+  m_Tag: Graphics
+  m_IsVariant: 0
