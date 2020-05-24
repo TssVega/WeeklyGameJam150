@@ -11,20 +11,27 @@ public class PlayerMovement : MonoBehaviour {
 	public float positionChangeSpeed = 5f;
 	private Coroutine positionShifter;
 	private bool changingPosition = false;
+	private bool moving = true;
 
-	private void Start() {
-		transform.position = new Vector3(transform.position.x, defaultPosition, transform.position.z);
+	public void StopLevel() {
+		moving = false;
+	}
+	public void StartLevel() {
+		transform.position = new Vector3(-6f, defaultPosition, 0f);
+		moving = true;
 	}
 	private void Update() {
-		transform.Translate(Vector3.right * Time.deltaTime * movementSpeed);
-		if(Input.GetKeyDown(KeyCode.UpArrow) && currentPosition < 1) {
-			currentPosition++;
-			ShiftPosition();
-		}
-		else if(Input.GetKeyDown(KeyCode.DownArrow) && currentPosition > -1) {
-			currentPosition--;
-			ShiftPosition();
-		}
+		if(moving) {
+			transform.Translate(Vector3.right * Time.deltaTime * movementSpeed);
+			if(Input.GetKeyDown(KeyCode.UpArrow) && currentPosition < 1) {
+				currentPosition++;
+				ShiftPosition();
+			}
+			else if(Input.GetKeyDown(KeyCode.DownArrow) && currentPosition > -1) {
+				currentPosition--;
+				ShiftPosition();
+			}
+		}		
 	}
 	private void ShiftPosition() {
 		if(changingPosition) {

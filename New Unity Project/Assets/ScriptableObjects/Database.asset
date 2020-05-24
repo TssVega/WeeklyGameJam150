@@ -30,4 +30,17 @@ MonoBehaviour:
   grassTiles:
   - {fileID: 11400000, guid: 597d74b37142e7749a1fdc8530a583b6, type: 2}
   - {fileID: 11400000, guid: 65c06ea19b7127b4bb3253b91a2e0313, type: 2}
+  cityTiles:
+  - {fileID: 11400000, guid: cf60090a7cb0bbf41b22a3d026c68d36, type: 2}
+  - {fileID: 11400000, guid: 65c06ea19b7127b4bb3253b91a2e0313, type: 2}
+  desertTiles:
+  - {fileID: 11400000, guid: 0bddf4a32c7ea3044933b9b7e463cec6, type: 2}
+  - {fileID: 11400000, guid: 1ff976bddd1e64f4d91d2382235365c9, type: 2}
+  timeTiles:
   - {fileID: 11400000, guid: 4d213e546ec63a24f9eff718b2afb163, type: 2}
+  - {fileID: 11400000, guid: bf82068fcade70546b62f9383eca7265, type: 2}
+  - {fileID: 11400000, guid: 08b03ecbe9fae804d8d78057d9a0f360, type: 2}
+  - {fileID: 11400000, guid: 6cf799c5e0fb44f48ac45d48530d38e5, type: 2}
+  levels:
+  - {fileID: 11400000, guid: 3c512826981eb084b8fd84237bc198e8, type: 2}
+  - {fileID: 11400000, guid: 3fbe8c7ed9abfd74c9e59736ebc5da2d, type: 2}
