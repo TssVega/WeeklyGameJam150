@@ -11,8 +11,10 @@ public class EnemyStationary : MonoBehaviour {
 	private readonly float xPosOffset = 15f;
 	private PlayerMovement player;
 	private bool alive;
+	private GameMaster gameMaster;
 
 	public void SetEnemy(Enemy enemy) {
+		gameMaster = FindObjectOfType<GameMaster>();
 		alive = true;
 		player = FindObjectOfType<PlayerMovement>();
 		this.enemy = enemy;
@@ -52,6 +54,7 @@ public class EnemyStationary : MonoBehaviour {
 		// gunOrBarrel.LookAt(target, Vector3.right);
 	}
 	public void Die() {
+		gameMaster.currentlyAliveEnemies.Remove(this.gameObject);
 		alive = false;
 		gameObject.SetActive(false);
 	}

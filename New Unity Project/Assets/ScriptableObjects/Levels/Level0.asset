@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a39fabf2980b0ce45b2667938f353e62, type: 3}
   m_Name: Level0
   m_EditorClassIdentifier: 
-  levelLength: 100
+  levelLength: 120
   theme: 2
   time: 1
   planeProbability: 20

@@ -14,11 +14,12 @@ public class GameMaster : MonoBehaviour {
 	public Tilemap skyBackgroundTilemap;
 	public Tilemap skyStuffTilemap;
 	public LevelLayout level;
-	[HideInInspector] public bool spawning = false;
+	public bool spawning = false;
 	private readonly int levelEndOffset = 20;
-	private readonly int enemyEndOffset = 20;
+	private readonly int enemyEndOffset = 30;
 	private PlayerMovement player;
 	public GameObject nextLevelButton;
+	public GameObject failLevelButton;
 	private bool onLevelEnd = false;
 	public Enemy jet;
 	public Enemy soldier;
@@ -52,10 +53,12 @@ public class GameMaster : MonoBehaviour {
 	private void SpawnEnemy(Enemy enemy) {
 		GameObject enemyObject = ObjectPooler.objectPooler.GetPooledObject(enemy.enemyName);
 		if(enemyObject && enemyObject.GetComponent<EnemyMovement>()) {
+			currentlyAliveEnemies.Add(enemyObject);
 			enemyObject.SetActive(true);
 			enemyObject.GetComponent<EnemyMovement>().SetEnemy(enemy);			
 		}
 		else if(enemyObject && enemyObject.GetComponent<EnemyStationary>()) {
+			currentlyAliveEnemies.Add(enemyObject);
 			enemyObject.SetActive(true);
 			enemyObject.GetComponent<EnemyStationary>().SetEnemy(enemy);			
 		}
@@ -74,9 +77,16 @@ public class GameMaster : MonoBehaviour {
 		}
 	}
 	public void SetLevel() {
+		if(currentlyAliveEnemies.Count > 0) {
+			for(int i = 0; i < currentlyAliveEnemies.Count; i++) {
+				currentlyAliveEnemies[i].SetActive(false);
+				currentlyAliveEnemies.RemoveAt(i);
+			}
+		}		
 		spawning = true;		
 		onLevelEnd = false;
 		nextLevelButton.SetActive(false);
+		failLevelButton.SetActive(false);
 		ClearLevel();
 		level = database.levels[currentLevel];
 		if(level) {
@@ -84,6 +94,20 @@ public class GameMaster : MonoBehaviour {
 		}
 		player.StartLevel();
 		StartCoroutine(CheckForSpawns());
+	}
+	public void CheckLevelCompletion() {
+		if(currentlyAliveEnemies.Count <= 0) {
+			EndLevel();
+		}
+		else {
+			FailLevel();
+		}
+	}
+	public void FailLevel() {
+		spawning = false;
+		onLevelEnd = true;
+		player.StopLevel();
+		failLevelButton.SetActive(true);
 	}
 	public void EndLevel() {
 		// Go to new level here

@@ -40,9 +40,17 @@ public class Projectile : MonoBehaviour {
 		if(playerProjectile) {
 			if(collision.CompareTag("Enemy")) {
 				if(collision.GetComponent<EnemyStationary>()) {
+					GameObject explosion = ObjectPooler.objectPooler.GetPooledObject("LserExplosion");
+					explosion.transform.position = transform.position;
+					explosion.transform.rotation = Quaternion.identity;
+					explosion.gameObject.SetActive(true);
 					collision.GetComponent<EnemyStationary>().Die();
 				}
 				else if(collision.GetComponent<EnemyMovement>()) {
+					GameObject explosion = ObjectPooler.objectPooler.GetPooledObject("LserExplosion");
+					explosion.transform.position = transform.position;
+					explosion.transform.rotation = Quaternion.identity;
+					explosion.gameObject.SetActive(true);
 					collision.GetComponent<EnemyMovement>().Die();
 				}
 			}

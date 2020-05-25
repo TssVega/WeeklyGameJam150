@@ -25,6 +25,7 @@ public class PlayerMovement : MonoBehaviour {
 	}
 	public void StartLevel() {
 		cooldownTimer = 0f;
+		currentPosition = 0;
 		transform.position = new Vector3(-6f, defaultPosition, 0f);
 		moving = true;
 	}
@@ -61,8 +62,8 @@ public class PlayerMovement : MonoBehaviour {
 		if(proj) {
 			proj.transform.position = fireTransform.position;
 			proj.transform.rotation = fireTransform.rotation;
-			proj.SetActive(true);
 			proj.GetComponent<Projectile>().SetProjectile(true, transform.position - fireDirection);
+			proj.SetActive(true);			
 		}
 	}
 	private void ShiftPosition() {

@@ -10,8 +10,10 @@ public class EnemyMovement : MonoBehaviour {
 	private readonly float xPosOffset = 15f;
 	private bool alive;
 	public Transform firePoint;
+	private GameMaster gameMaster;
 
 	public void SetEnemy(Enemy enemy) {
+		gameMaster = FindObjectOfType<GameMaster>();
 		alive = true;
 		this.enemy = enemy;
 		if(!spriteRen) {
@@ -37,6 +39,7 @@ public class EnemyMovement : MonoBehaviour {
 		}
 	}
 	public void Die() {
+		gameMaster.currentlyAliveEnemies.Remove(this.gameObject);
 		alive = false;
 		gameObject.SetActive(false);
 	}

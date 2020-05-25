@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6003880370133773067}
   m_Layer: 0
   m_Name: Laser
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -139,7 +139,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.38, y: 0.06}
+  m_Size: {x: 0.38, y: 0.2}
   m_EdgeRadius: 0
 --- !u!50 &6003880370133773067
 Rigidbody2D:
@@ -160,5 +160,5 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
