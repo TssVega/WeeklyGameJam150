@@ -23,36 +23,41 @@ public class GameMaster : MonoBehaviour {
 	public Enemy jet;
 	public Enemy soldier;
 	public Enemy tank;
+	public List<GameObject> currentlyAliveEnemies;
 
 	private void Awake() {
 		player = FindObjectOfType<PlayerMovement>();
 	}
 	private IEnumerator CheckForSpawns() {
-		//int rotor = 0;      // Goes between 0, 1 and 2 to determine the next spawn type
 		while(spawning) {
 			if(!onLevelEnd) {
-				float random = Random.Range(0f, 100f);
-				if(random < level.planeProbability) {
+				float jetRandom = Random.Range(0f, 100f);
+				if(jetRandom < level.planeProbability) {
 					SpawnEnemy(jet);
-					//rotor = 1;
 				}
-				if(random < level.soldierProbability) {
+				yield return new WaitForSeconds(level.resendSpeed);
+				float soldierRandom = Random.Range(0f, 100f);
+				if(soldierRandom < level.soldierProbability) {
 					SpawnEnemy(soldier);
-					//rotor = 2;
 				}
-				if(random < level.tankProbability) {
+				yield return new WaitForSeconds(level.resendSpeed);
+				float tankRandom = Random.Range(0f, 100f);
+				if(tankRandom < level.tankProbability) {
 					SpawnEnemy(tank);
-					//rotor = 0;
 				}
-				yield return new WaitForSeconds(0.4f);
+				yield return new WaitForSeconds(level.resendSpeed);
 			}
 		}		
 	}
 	private void SpawnEnemy(Enemy enemy) {
-		GameObject enemyObject = ObjectPooler.objectPooler.GetPooledObject("Enemy");
-		if(enemyObject) {
-			enemyObject.GetComponent<EnemyMovement>().SetEnemy(enemy);
+		GameObject enemyObject = ObjectPooler.objectPooler.GetPooledObject(enemy.enemyName);
+		if(enemyObject && enemyObject.GetComponent<EnemyMovement>()) {
 			enemyObject.SetActive(true);
+			enemyObject.GetComponent<EnemyMovement>().SetEnemy(enemy);			
+		}
+		else if(enemyObject && enemyObject.GetComponent<EnemyStationary>()) {
+			enemyObject.SetActive(true);
+			enemyObject.GetComponent<EnemyStationary>().SetEnemy(enemy);			
 		}
 		else {
 			Debug.LogWarning("null enemy");

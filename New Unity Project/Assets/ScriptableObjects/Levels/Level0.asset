@@ -15,6 +15,7 @@ MonoBehaviour:
   levelLength: 100
   theme: 2
   time: 1
-  planeProbability: 100
-  tankProbability: 0
-  soldierProbability: 0
+  planeProbability: 20
+  tankProbability: 50
+  soldierProbability: 80
+  resendSpeed: 1

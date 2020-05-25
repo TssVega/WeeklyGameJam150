@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b637aebc427714b45b7c6784fb12941f, type: 3}
   m_Name: Jet
   m_EditorClassIdentifier: 
+  enemyName: Jet
   sprite: {fileID: -7808734593389313954, guid: f2950976f8937c441b06b93135f71d5a, type: 3}
-  soldierWeaponSprite: {fileID: 0}
-  tankCannonSprite: {fileID: 0}
-  movementSpeed: 10
-  rateOfFire: 0
+  movementSpeed: 4
+  projectile: {fileID: 4601831836622363594, guid: 8a62ca79624aeb446a59f40a1f1398b2,
+    type: 3}
+  rateOfFire: 0.8
   defaultYPosition: 2
   yPosOffset: 2
   moving: 1

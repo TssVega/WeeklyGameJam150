@@ -10,6 +10,7 @@ public class LevelLayout : ScriptableObject {
 	public float planeProbability = 10f;
 	public float tankProbability = 10f;
 	public float soldierProbability = 10f;
+	public float resendSpeed = 0.4f;
 }
 public enum LevelTheme {
 	Grass, City, Desert

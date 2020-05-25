@@ -47,7 +47,9 @@ SpriteAtlas:
     - {fileID: 2800000, guid: 95e71e7a3a375cf48bbe38ac9fe66afa, type: 3}
     - {fileID: 2800000, guid: 7628a2f57d709ac4ca7034522afc6440, type: 3}
     - {fileID: 2800000, guid: 3e705593324cb9344b42d5549b252f4c, type: 3}
-    totalSpriteSurfaceArea: 20480
+    - {fileID: 2800000, guid: 083d8dca93b514b4fb2cc70910acb9e7, type: 3}
+    - {fileID: 2800000, guid: addfab04b96812a42827252b68678234, type: 3}
+    totalSpriteSurfaceArea: 28672
     bindAsDefault: 1
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
@@ -59,6 +61,10 @@ SpriteAtlas:
   - {fileID: -4970410492042351176, guid: 3e705593324cb9344b42d5549b252f4c, type: 3}
   - {fileID: -562605217060080129, guid: 3e705593324cb9344b42d5549b252f4c, type: 3}
   - {fileID: -5930158604282628446, guid: 3e705593324cb9344b42d5549b252f4c, type: 3}
+  - {fileID: 6781167332700664777, guid: addfab04b96812a42827252b68678234, type: 3}
+  - {fileID: 1252243683051303324, guid: addfab04b96812a42827252b68678234, type: 3}
+  - {fileID: -3548031942192175384, guid: addfab04b96812a42827252b68678234, type: 3}
+  - {fileID: 4206860055589038045, guid: addfab04b96812a42827252b68678234, type: 3}
   - {fileID: -3543039480774893336, guid: 7628a2f57d709ac4ca7034522afc6440, type: 3}
   - {fileID: -2798446716505497227, guid: 7628a2f57d709ac4ca7034522afc6440, type: 3}
   - {fileID: -3505344249828319880, guid: 7628a2f57d709ac4ca7034522afc6440, type: 3}
@@ -71,6 +77,10 @@ SpriteAtlas:
   - {fileID: 8508076330584263242, guid: 95e71e7a3a375cf48bbe38ac9fe66afa, type: 3}
   - {fileID: 1172746796854112078, guid: 95e71e7a3a375cf48bbe38ac9fe66afa, type: 3}
   - {fileID: 1453730230956404686, guid: 95e71e7a3a375cf48bbe38ac9fe66afa, type: 3}
+  - {fileID: -7772677462987166428, guid: 083d8dca93b514b4fb2cc70910acb9e7, type: 3}
+  - {fileID: 7546923768095769812, guid: 083d8dca93b514b4fb2cc70910acb9e7, type: 3}
+  - {fileID: 4210252714253190280, guid: 083d8dca93b514b4fb2cc70910acb9e7, type: 3}
+  - {fileID: 1020141668243131721, guid: 083d8dca93b514b4fb2cc70910acb9e7, type: 3}
   m_PackedSpriteNamesToIndex:
   - NightSky0
   - NightSky1
@@ -80,6 +90,10 @@ SpriteAtlas:
   - Water
   - Desert
   - Grass
+  - Shell
+  - Ammo
+  - Fire
+  - Laser
   - DeepBlue
   - DeepTiles_3
   - Brown
@@ -92,5 +106,9 @@ SpriteAtlas:
   - Cloud1
   - Sun
   - Moon
+  - Gun
+  - TankBarrel
+  - Buildings0
+  - Buildings1
   m_Tag: Graphics
   m_IsVariant: 0

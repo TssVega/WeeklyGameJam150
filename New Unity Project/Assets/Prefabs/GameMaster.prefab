@@ -45,10 +45,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   database: {fileID: 11400000, guid: d0b10d7f543951d479c9401f8f8c6e86, type: 2}
-  yRange: 0
+  levelEnder: {fileID: 0}
+  enemyEnder: {fileID: 0}
   groundTilemap: {fileID: 0}
   skyBackgroundTilemap: {fileID: 0}
   skyStuffTilemap: {fileID: 0}
+  level: {fileID: 0}
+  spawning: 0
+  nextLevelButton: {fileID: 0}
+  jet: {fileID: 11400000, guid: 05b30c47cee8ce1419c917453bd62bbf, type: 2}
+  soldier: {fileID: 11400000, guid: 5ce1f23846145604a87196ebc0d743f2, type: 2}
+  tank: {fileID: 11400000, guid: 7ba5787892ff73943b8784b2ed8ceec2, type: 2}
+  currentlyAliveEnemies: []
 --- !u!114 &5030512917403387727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63,4 +71,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectNames: []
   pooledObjects: []
-  objectsToPool: []
+  objectsToPool:
+  - {fileID: 5297934018848853574, guid: fdfb8cd45df205c4097182453de959a8, type: 3}
+  - {fileID: 5297934018848853574, guid: 911d46cadb60085449b2d15123c5d4bc, type: 3}
+  - {fileID: 5297934018848853574, guid: b13b4cb705b6f3f4c840552d60177d67, type: 3}
+  - {fileID: 5080265396474735637, guid: 6b523d4b6fd711d4fb58e4d7df2ab3bd, type: 3}
+  - {fileID: 4601831836622363594, guid: 8a62ca79624aeb446a59f40a1f1398b2, type: 3}
+  - {fileID: 7103625388272173347, guid: 665ed39449bd55e428b334a0615dd79c, type: 3}
+  - {fileID: 1575424464491248486, guid: 8cfc7cc11ba052c4d93ab1248f80e62c, type: 3}

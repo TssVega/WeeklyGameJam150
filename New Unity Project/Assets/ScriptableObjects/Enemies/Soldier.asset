@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b637aebc427714b45b7c6784fb12941f, type: 3}
   m_Name: Soldier
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
-  soldierWeaponSprite: {fileID: 0}
-  tankCannonSprite: {fileID: 0}
+  enemyName: Soldier
+  sprite: {fileID: 21300000, guid: 7bb3d5ba914dca9428919e8a1996fdfe, type: 3}
   movementSpeed: 0
-  rateOfFire: 0
-  defaultYPosition: 0
+  projectile: {fileID: 5080265396474735637, guid: 6b523d4b6fd711d4fb58e4d7df2ab3bd,
+    type: 3}
+  rateOfFire: 0.7
+  defaultYPosition: -1.5
   yPosOffset: 0
   moving: 0

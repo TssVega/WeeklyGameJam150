@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class PlayerMovement : MonoBehaviour {
 
@@ -12,16 +13,26 @@ public class PlayerMovement : MonoBehaviour {
 	private Coroutine positionShifter;
 	private bool changingPosition = false;
 	private bool moving = true;
+	public List<Transform> targets;
+	public List<Transform> firePositions;
+	public List<Transform> forwardFirePositions;
+	public GameObject projectile;
+	public float fireRate = 10f;
+	private float cooldownTimer = 0f;
 
 	public void StopLevel() {
 		moving = false;
 	}
 	public void StartLevel() {
+		cooldownTimer = 0f;
 		transform.position = new Vector3(-6f, defaultPosition, 0f);
 		moving = true;
 	}
 	private void Update() {
 		if(moving) {
+			if(cooldownTimer > 0) {
+				cooldownTimer -= Time.deltaTime;
+			}
 			transform.Translate(Vector3.right * Time.deltaTime * movementSpeed);
 			if(Input.GetKeyDown(KeyCode.UpArrow) && currentPosition < 1) {
 				currentPosition++;
@@ -31,7 +42,28 @@ public class PlayerMovement : MonoBehaviour {
 				currentPosition--;
 				ShiftPosition();
 			}
+			if(Input.GetKey(KeyCode.Z) && cooldownTimer <= 0) {
+				Fire(forwardFirePositions[0].position - firePositions[0].position, firePositions[0]);
+				cooldownTimer = 1f / fireRate;
+			}
+			else if(Input.GetKey(KeyCode.X) && cooldownTimer <= 0) {
+				Fire(forwardFirePositions[1].position - firePositions[1].position, firePositions[1]);
+				cooldownTimer = 1f / fireRate;
+			}
+			else if(Input.GetKey(KeyCode.D) && cooldownTimer <= 0) {
+				Fire(forwardFirePositions[2].position - firePositions[2].position, firePositions[2]);
+				cooldownTimer = 1f / fireRate;
+			}
 		}		
+	}
+	private void Fire(Vector3 fireDirection, Transform fireTransform) {
+		GameObject proj = ObjectPooler.objectPooler.GetPooledObject(projectile.GetComponent<Projectile>().projectileName);
+		if(proj) {
+			proj.transform.position = fireTransform.position;
+			proj.transform.rotation = fireTransform.rotation;
+			proj.SetActive(true);
+			proj.GetComponent<Projectile>().SetProjectile(true, transform.position - fireDirection);
+		}
 	}
 	private void ShiftPosition() {
 		if(changingPosition) {
