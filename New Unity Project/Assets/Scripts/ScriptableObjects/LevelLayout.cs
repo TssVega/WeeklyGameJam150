@@ -4,6 +4,7 @@ using System.Collections;
 [CreateAssetMenu]
 public class LevelLayout : ScriptableObject {
 
+	public int extraLength = 400;
 	public int levelLength = 100;
 	public LevelTheme theme;
 	public TimeOfDay time;

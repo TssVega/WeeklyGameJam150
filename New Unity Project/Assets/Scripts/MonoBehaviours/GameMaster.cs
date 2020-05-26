@@ -20,11 +20,16 @@ public class GameMaster : MonoBehaviour {
 	private PlayerMovement player;
 	public GameObject nextLevelButton;
 	public GameObject failLevelButton;
+	public GameObject startGamePanel;
+	public GameObject sun;
+	public GameObject moon;
 	private bool onLevelEnd = false;
+	private bool onStartMenu = true;
 	public Enemy jet;
 	public Enemy soldier;
 	public Enemy tank;
 	public List<GameObject> currentlyAliveEnemies;
+	private Coroutine spawnChecker;
 
 	private void Awake() {
 		player = FindObjectOfType<PlayerMovement>();
@@ -67,7 +72,7 @@ public class GameMaster : MonoBehaviour {
 		}
 	}
 	private void Start() {
-		SetLevel();	
+		startGamePanel.SetActive(true);
 	}
 	private void Update() {
 		if(onLevelEnd) {
@@ -75,16 +80,22 @@ public class GameMaster : MonoBehaviour {
 				SetLevel();
 			}
 		}
+		else if(onStartMenu) {
+			if(Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.KeypadEnter)) {
+				StartGame();
+				onStartMenu = false;
+			}
+		}
+	}
+	public void StartGame() {
+		SetLevel();
+		startGamePanel.SetActive(false);
 	}
 	public void SetLevel() {
-		if(currentlyAliveEnemies.Count > 0) {
-			for(int i = 0; i < currentlyAliveEnemies.Count; i++) {
-				currentlyAliveEnemies[i].SetActive(false);
-				currentlyAliveEnemies.RemoveAt(i);
-			}
-		}		
+		// ClearEnemies();
 		spawning = true;		
 		onLevelEnd = false;
+		ClearEnemies();
 		nextLevelButton.SetActive(false);
 		failLevelButton.SetActive(false);
 		ClearLevel();
@@ -93,7 +104,15 @@ public class GameMaster : MonoBehaviour {
 			GenerateLevel();
 		}
 		player.StartLevel();
-		StartCoroutine(CheckForSpawns());
+		spawnChecker = StartCoroutine(CheckForSpawns());
+	}
+	private void ClearEnemies() {
+		if(currentlyAliveEnemies.Count > 0) {
+			for(int i = 0; i < currentlyAliveEnemies.Count; i++) {
+				currentlyAliveEnemies[i].SetActive(false);				
+			}
+			currentlyAliveEnemies.Clear();
+		}
 	}
 	public void CheckLevelCompletion() {
 		if(currentlyAliveEnemies.Count <= 0) {
@@ -104,6 +123,9 @@ public class GameMaster : MonoBehaviour {
 		}
 	}
 	public void FailLevel() {
+		if(spawning) {
+			StopCoroutine(spawnChecker);
+		}
 		spawning = false;
 		onLevelEnd = true;
 		player.StopLevel();
@@ -111,6 +133,9 @@ public class GameMaster : MonoBehaviour {
 	}
 	public void EndLevel() {
 		// Go to new level here
+		if(spawning) {
+			StopCoroutine(spawnChecker);
+		}		
 		spawning = false;
 		currentLevel++;
 		onLevelEnd = true;
@@ -120,12 +145,25 @@ public class GameMaster : MonoBehaviour {
 	private void ClearLevel() {
 		//groundTilemap.ClearAllTiles();
 		//skyBackgroundTilemap.ClearAllTiles();
-		groundTilemap.ClearAllEditorPreviewTiles();
-		skyBackgroundTilemap.ClearAllEditorPreviewTiles();
+		//groundTilemap.ClearAllEditorPreviewTiles();
+		//skyBackgroundTilemap.ClearAllEditorPreviewTiles();
+		foreach(Trees t in FindObjectsOfType<Trees>()) {
+			t.gameObject.SetActive(false);
+		}
+		foreach(Building b in FindObjectsOfType<Building>()) {
+			b.gameObject.SetActive(false);
+		}
+		foreach(Projectile p in FindObjectsOfType<Projectile>()) {
+			p.gameObject.SetActive(false);
+		}
+		foreach(Explosion e in FindObjectsOfType<Explosion>()) {
+			e.gameObject.SetActive(false);
+		}
 	}
 	private void GenerateLevel() {
 		GenerateSky();
 		GenerateGround();
+		FillGround();
 	}
 	private void GenerateGround() {
 		List<Tile> tiles = new List<Tile>();
@@ -138,18 +176,38 @@ public class GameMaster : MonoBehaviour {
 		else if(level.theme == LevelTheme.Desert) {
 			tiles = database.desertTiles;
 		}
-		groundTilemap.BoxFill(Vector3Int.zero, tiles[1], -15, -yRange, level.levelLength, 0);
-		groundTilemap.BoxFill(Vector3Int.zero, tiles[0], -15, 0, level.levelLength, 0);
+		groundTilemap.BoxFill(Vector3Int.zero, tiles[1], -15, -yRange, level.extraLength, 0);
+		groundTilemap.BoxFill(Vector3Int.zero, tiles[0], -15, 0, level.extraLength, 0);
 		levelEnder.transform.position = new Vector3(level.levelLength - levelEndOffset, 0, 0);
 		enemyEnder.transform.position = new Vector3(level.levelLength - levelEndOffset - enemyEndOffset, 0, 0);
 	}
 	private void GenerateSky() {
-		skyBackgroundTilemap.BoxFill(Vector3Int.zero, database.timeTiles[(int)level.time], -15, 0, level.levelLength, yRange);
-	}
-	private void FillSky() {
-	
+		if(level.time == TimeOfDay.Day || level.time == TimeOfDay.Sunset) {
+			sun.SetActive(true);
+			moon.SetActive(false);
+		}
+		else {
+			sun.SetActive(false);
+			moon.SetActive(true);
+		}
+		skyBackgroundTilemap.BoxFill(Vector3Int.zero, database.timeTiles[(int)level.time], -15, 0, level.extraLength, yRange);
 	}
 	private void FillGround() {
-	
+		if(level.theme == LevelTheme.City) {
+			for(int i = 0; i < level.levelLength / 5; i++) {
+				Vector3 pos = new Vector3(transform.position.x + i * 5, transform.position.y, 0);
+				Instantiate(database.buildings[(int)Random.Range(0f, 3.99999f)], pos, Quaternion.identity);
+			}
+		}
+		else if(level.theme == LevelTheme.Grass) {
+			for(int i = 0; i < level.levelLength / 5; i++) {
+				Vector3 pos = new Vector3(transform.position.x + i * 5, transform.position.y + 1.8f, 0);
+				GameObject tree = ObjectPooler.objectPooler.GetPooledObject("Tree");
+				tree.transform.position = pos;
+				tree.transform.rotation = Quaternion.identity;
+				tree.GetComponent<SpriteRenderer>().sprite = database.trees[(int)Random.Range(0f, 13.99999f)];
+				tree.SetActive(true);
+			}
+		}
 	}
 }

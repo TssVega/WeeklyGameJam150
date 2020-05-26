@@ -41,6 +41,10 @@ public class EnemyMovement : MonoBehaviour {
 	public void Die() {
 		gameMaster.currentlyAliveEnemies.Remove(this.gameObject);
 		alive = false;
+		GameObject explosion = ObjectPooler.objectPooler.GetPooledObject("TnkAndPlaneExplode");
+		explosion.transform.position = transform.position;
+		explosion.transform.rotation = Quaternion.identity;
+		explosion.gameObject.SetActive(true);
 		gameObject.SetActive(false);
 	}
 	private IEnumerator CheckFire() {

@@ -49,10 +49,14 @@ SpriteAtlas:
     - {fileID: 2800000, guid: 3e705593324cb9344b42d5549b252f4c, type: 3}
     - {fileID: 2800000, guid: 083d8dca93b514b4fb2cc70910acb9e7, type: 3}
     - {fileID: 2800000, guid: addfab04b96812a42827252b68678234, type: 3}
-    totalSpriteSurfaceArea: 28672
+    - {fileID: 2800000, guid: c55173c098deb3e42854203eb334a50e, type: 3}
+    - {fileID: 21300000, guid: 241a153b82df43648af189d421d336de, type: 3}
+    totalSpriteSurfaceArea: 33792
     bindAsDefault: 1
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
+  - {fileID: 9121912168462377984, guid: c55173c098deb3e42854203eb334a50e, type: 3}
+  - {fileID: 3253372774238963259, guid: c55173c098deb3e42854203eb334a50e, type: 3}
   - {fileID: -4713091289263263070, guid: 83ca4d23f93a9ba4099520409e1a66e6, type: 3}
   - {fileID: 8947408791622433843, guid: 83ca4d23f93a9ba4099520409e1a66e6, type: 3}
   - {fileID: 2177602273920956487, guid: 83ca4d23f93a9ba4099520409e1a66e6, type: 3}
@@ -81,7 +85,10 @@ SpriteAtlas:
   - {fileID: 7546923768095769812, guid: 083d8dca93b514b4fb2cc70910acb9e7, type: 3}
   - {fileID: 4210252714253190280, guid: 083d8dca93b514b4fb2cc70910acb9e7, type: 3}
   - {fileID: 1020141668243131721, guid: 083d8dca93b514b4fb2cc70910acb9e7, type: 3}
+  - {fileID: 21300000, guid: 241a153b82df43648af189d421d336de, type: 3}
   m_PackedSpriteNamesToIndex:
+  - SomeBuildings_1
+  - SomeBuildings_0
   - NightSky0
   - NightSky1
   - DaySky
@@ -110,5 +117,6 @@ SpriteAtlas:
   - TankBarrel
   - Buildings0
   - Buildings1
+  - Black
   m_Tag: Graphics
   m_IsVariant: 0

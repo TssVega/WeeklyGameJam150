@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Explosion : MonoBehaviour {
 
-	private float lifetime = 1f;
+	public float lifetime = 1f;
 	private float lifetimeCounter;
 
 	private void OnEnable() {

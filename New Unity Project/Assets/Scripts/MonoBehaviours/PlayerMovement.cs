@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour {
 	public float positionChangeSpeed = 5f;
 	private Coroutine positionShifter;
 	private bool changingPosition = false;
-	private bool moving = true;
+	private bool moving = false;
 	public List<Transform> targets;
 	public List<Transform> firePositions;
 	public List<Transform> forwardFirePositions;
@@ -24,6 +24,7 @@ public class PlayerMovement : MonoBehaviour {
 		moving = false;
 	}
 	public void StartLevel() {
+		gameObject.SetActive(true);
 		cooldownTimer = 0f;
 		currentPosition = 0;
 		transform.position = new Vector3(-6f, defaultPosition, 0f);
@@ -51,7 +52,7 @@ public class PlayerMovement : MonoBehaviour {
 				Fire(forwardFirePositions[1].position - firePositions[1].position, firePositions[1]);
 				cooldownTimer = 1f / fireRate;
 			}
-			else if(Input.GetKey(KeyCode.D) && cooldownTimer <= 0) {
+			else if(Input.GetKey(KeyCode.C) && cooldownTimer <= 0) {
 				Fire(forwardFirePositions[2].position - firePositions[2].position, firePositions[2]);
 				cooldownTimer = 1f / fireRate;
 			}
@@ -72,7 +73,7 @@ public class PlayerMovement : MonoBehaviour {
 		}
 		else {
 			positionShifter = StartCoroutine(ChangeVerticalPosition());
-		}		
+		}
 	}
 	private void CancelShifting() {
 		StopCoroutine(positionShifter);
@@ -90,5 +91,13 @@ public class PlayerMovement : MonoBehaviour {
 			yield return null;
 		}
 		changingPosition = false;
+	}
+	public void Die() {
+		FindObjectOfType<GameMaster>().FailLevel();
+		GameObject explosion = ObjectPooler.objectPooler.GetPooledObject("ShipExplode");
+		explosion.transform.position = transform.position;
+		explosion.transform.rotation = Quaternion.identity;
+		explosion.gameObject.SetActive(true);
+		gameObject.SetActive(false);
 	}
 }

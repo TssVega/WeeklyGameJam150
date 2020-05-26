@@ -100,7 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileName: Laser
   speed: 20
-  lifetime: 5
+  lifetime: 3
 --- !u!114 &-1093562297701413682
 MonoBehaviour:
   m_ObjectHideFlags: 0

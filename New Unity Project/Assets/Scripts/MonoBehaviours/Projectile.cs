@@ -34,6 +34,13 @@ public class Projectile : MonoBehaviour {
 			if(lifetimeCounter <= 0) {
 				gameObject.SetActive(false);
 			}
+			if(transform.position.y < 1) {
+				GameObject explosion = ObjectPooler.objectPooler.GetPooledObject("LserExplosion");
+				explosion.transform.position = transform.position;
+				explosion.transform.rotation = Quaternion.identity;
+				explosion.gameObject.SetActive(true);
+				gameObject.SetActive(false);
+			}
 		}
 	}
 	public void OnTriggerEnter2D(Collider2D collision) {
@@ -45,6 +52,7 @@ public class Projectile : MonoBehaviour {
 					explosion.transform.rotation = Quaternion.identity;
 					explosion.gameObject.SetActive(true);
 					collision.GetComponent<EnemyStationary>().Die();
+					gameObject.SetActive(false);
 				}
 				else if(collision.GetComponent<EnemyMovement>()) {
 					GameObject explosion = ObjectPooler.objectPooler.GetPooledObject("LserExplosion");
@@ -52,12 +60,21 @@ public class Projectile : MonoBehaviour {
 					explosion.transform.rotation = Quaternion.identity;
 					explosion.gameObject.SetActive(true);
 					collision.GetComponent<EnemyMovement>().Die();
+					gameObject.SetActive(false);
 				}
+			}
+			else if(collision.CompareTag("Prop")) {
+				GameObject explosion = ObjectPooler.objectPooler.GetPooledObject("LserExplosion");
+				explosion.transform.position = transform.position;
+				explosion.transform.rotation = Quaternion.identity;
+				explosion.gameObject.SetActive(true);
+				gameObject.SetActive(false);
 			}
 		}
 		else if(!playerProjectile) {
 			if(collision.CompareTag("Player")) {
 				// Kill the player
+				collision.GetComponent<PlayerMovement>().Die();
 				gameObject.SetActive(false);
 			}
 		}

@@ -18,6 +18,6 @@ MonoBehaviour:
   projectile: {fileID: 7103625388272173347, guid: 665ed39449bd55e428b334a0615dd79c,
     type: 3}
   rateOfFire: 0.5
-  defaultYPosition: -1.5
+  defaultYPosition: -1
   yPosOffset: 0
   moving: 0

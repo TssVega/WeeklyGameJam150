@@ -30,7 +30,9 @@ public class EnemyStationary : MonoBehaviour {
 	}
 	private IEnumerator CheckFire() {
 		while(alive) {
-			Fire();
+			if(player && player.gameObject.activeInHierarchy) {
+				Fire();
+			}			
 			yield return new WaitForSeconds(1f / enemy.rateOfFire);
 		}
 	}
@@ -56,6 +58,12 @@ public class EnemyStationary : MonoBehaviour {
 	public void Die() {
 		gameMaster.currentlyAliveEnemies.Remove(this.gameObject);
 		alive = false;
+		if(enemy.enemyName == "Tank") {
+			GameObject explosion = ObjectPooler.objectPooler.GetPooledObject("TnkAndPlaneExplode");
+			explosion.transform.position = transform.position;
+			explosion.transform.rotation = Quaternion.identity;
+			explosion.gameObject.SetActive(true);
+		}
 		gameObject.SetActive(false);
 	}
 }

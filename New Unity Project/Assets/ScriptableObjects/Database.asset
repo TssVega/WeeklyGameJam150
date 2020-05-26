@@ -39,8 +39,21 @@ MonoBehaviour:
   timeTiles:
   - {fileID: 11400000, guid: 4d213e546ec63a24f9eff718b2afb163, type: 2}
   - {fileID: 11400000, guid: bf82068fcade70546b62f9383eca7265, type: 2}
-  - {fileID: 11400000, guid: 08b03ecbe9fae804d8d78057d9a0f360, type: 2}
+  - {fileID: 11400000, guid: b5fe0e6870ab7f44a9f7207458808c9c, type: 2}
   - {fileID: 11400000, guid: 6cf799c5e0fb44f48ac45d48530d38e5, type: 2}
   levels:
   - {fileID: 11400000, guid: 3c512826981eb084b8fd84237bc198e8, type: 2}
   - {fileID: 11400000, guid: 3fbe8c7ed9abfd74c9e59736ebc5da2d, type: 2}
+  - {fileID: 11400000, guid: ec0f60051e3f0094cb8dd421de87e011, type: 2}
+  - {fileID: 11400000, guid: 133997ef03f0d7a4abaa4a8dbb8f513a, type: 2}
+  - {fileID: 11400000, guid: d3bf502ba083b454b8960c755e76afa6, type: 2}
+  - {fileID: 11400000, guid: e0031b4c3f21ea94cbf0a980e588f5e0, type: 2}
+  - {fileID: 11400000, guid: 813b532464951194280a8d9995737395, type: 2}
+  - {fileID: 11400000, guid: 291b44ee3f463ca4aa9786b9c3850062, type: 2}
+  - {fileID: 11400000, guid: 151adcad49c88504b8e5e743258336f3, type: 2}
+  - {fileID: 11400000, guid: bffd3b6fc41a8414cbbffe0793d4af83, type: 2}
+  buildings:
+  - {fileID: 1516862926061618575, guid: df261ac57389bad4babc87a365a733d7, type: 3}
+  - {fileID: 5194006205309556312, guid: aee24918e04f7004bb9b0684f68ffdeb, type: 3}
+  - {fileID: 8289351147670487886, guid: 028aea74af6b71d46bef58d0c25ba796, type: 3}
+  - {fileID: 7065410144903031989, guid: b1c5280acf3c43d429675e54d1d84539, type: 3}

@@ -13,4 +13,5 @@ public class Database : ScriptableObject {
 	// 0 for day, 1 for sunset, 2 and 3 for night
 	public List<Tile> timeTiles;
 	public List<LevelLayout> levels;
+	public List<Building> buildings;
 }
