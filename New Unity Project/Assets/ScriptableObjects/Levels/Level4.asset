@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a39fabf2980b0ce45b2667938f353e62, type: 3}
   m_Name: Level4
   m_EditorClassIdentifier: 
+  extraLength: 420
   levelLength: 120
   theme: 0
-  time: 0
-  planeProbability: 30
-  tankProbability: 60
-  soldierProbability: 60
-  resendSpeed: 1.3
+  time: 1
+  planeProbability: 40
+  tankProbability: 40
+  soldierProbability: 90
+  resendSpeed: 1.6

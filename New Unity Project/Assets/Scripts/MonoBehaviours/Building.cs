@@ -26,6 +26,7 @@ public class Building : MonoBehaviour {
 			smoke.transform.rotation = Quaternion.identity;
 			smoke.gameObject.SetActive(true);
 			StartCoroutine(ShakeBuilding());
+			SoundManager.audioManager.PlaySound("BuildingCollapse");
 			// transform.localScale = new Vector3(2, 1.9f, 2);
 		}
 		if(collision.CompareTag("Player")) {
@@ -37,6 +38,7 @@ public class Building : MonoBehaviour {
 			smoke.transform.rotation = Quaternion.identity;
 			smoke.gameObject.SetActive(true);
 			StartCoroutine(ShakeBuilding());
+			SoundManager.audioManager.PlaySound("BuildingCollapse");
 		}
 	}
 	private void Update() {

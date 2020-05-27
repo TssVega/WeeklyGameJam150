@@ -45,6 +45,7 @@ public class EnemyMovement : MonoBehaviour {
 		explosion.transform.position = transform.position;
 		explosion.transform.rotation = Quaternion.identity;
 		explosion.gameObject.SetActive(true);
+		SoundManager.audioManager.PlaySound("PlaneExplode");
 		gameObject.SetActive(false);
 	}
 	private IEnumerator CheckFire() {
@@ -60,6 +61,7 @@ public class EnemyMovement : MonoBehaviour {
 			proj.transform.rotation = firePoint.rotation;
 			proj.SetActive(true);
 			proj.GetComponent<Projectile>().SetProjectile(firePoint.position);
+			SoundManager.audioManager.PlaySound("PlaneFire");
 		}
 	}
 }

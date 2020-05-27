@@ -19,6 +19,7 @@ public class Trees : MonoBehaviour {
 			smoke.transform.rotation = Quaternion.identity;
 			smoke.gameObject.SetActive(true);
 			StartCoroutine(ShakeTree());
+			SoundManager.audioManager.PlaySound("TreeBurn");
 		}
 		if(collision.CompareTag("Player")) {
 			collision.GetComponent<PlayerMovement>().Die();
@@ -29,6 +30,7 @@ public class Trees : MonoBehaviour {
 			smoke.transform.rotation = Quaternion.identity;
 			smoke.gameObject.SetActive(true);
 			StartCoroutine(ShakeTree());
+			SoundManager.audioManager.PlaySound("TreeBurn");
 		}
 	}
 	private void Update() {

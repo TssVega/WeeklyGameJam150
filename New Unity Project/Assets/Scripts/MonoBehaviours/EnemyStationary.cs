@@ -53,6 +53,12 @@ public class EnemyStationary : MonoBehaviour {
 		else {
 			Debug.LogWarning("null projectile");
 		}
+		if(enemy.enemyName == "Soldier") {
+			SoundManager.audioManager.PlaySound("SoldierFire");
+		}
+		else if(enemy.enemyName == "Tank") {
+			SoundManager.audioManager.PlaySound("TankFire");
+		}
 		// gunOrBarrel.LookAt(target, Vector3.right);
 	}
 	public void Die() {
@@ -63,6 +69,12 @@ public class EnemyStationary : MonoBehaviour {
 			explosion.transform.position = transform.position;
 			explosion.transform.rotation = Quaternion.identity;
 			explosion.gameObject.SetActive(true);
+		}
+		if(enemy.enemyName == "Soldier") {
+			SoundManager.audioManager.PlaySound("SoldierDeath");
+		}
+		else if(enemy.enemyName == "Tank") {
+			SoundManager.audioManager.PlaySound("TankExplode");
 		}
 		gameObject.SetActive(false);
 	}

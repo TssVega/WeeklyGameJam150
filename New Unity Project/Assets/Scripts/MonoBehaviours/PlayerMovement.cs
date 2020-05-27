@@ -64,7 +64,8 @@ public class PlayerMovement : MonoBehaviour {
 			proj.transform.position = fireTransform.position;
 			proj.transform.rotation = fireTransform.rotation;
 			proj.GetComponent<Projectile>().SetProjectile(true, transform.position - fireDirection);
-			proj.SetActive(true);			
+			proj.SetActive(true);
+			SoundManager.audioManager.PlaySound("Laser");
 		}
 	}
 	private void ShiftPosition() {
@@ -98,6 +99,7 @@ public class PlayerMovement : MonoBehaviour {
 		explosion.transform.position = transform.position;
 		explosion.transform.rotation = Quaternion.identity;
 		explosion.gameObject.SetActive(true);
+		SoundManager.audioManager.PlaySound("UfoExplode");
 		gameObject.SetActive(false);
 	}
 }

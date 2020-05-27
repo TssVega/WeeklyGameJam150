@@ -2,12 +2,14 @@
 using UnityEngine.Tilemaps;
 using System.Collections.Generic;
 using System.Collections;
+using TMPro;
 
 public class GameMaster : MonoBehaviour {
 
 	public Database database;
 	private int currentLevel = 0;
-	private readonly int yRange = 12;
+	private readonly int yRange = 15;
+	private readonly int xRange = 15;
 	public LevelEnder levelEnder;
 	public EnemyEnder enemyEnder;
 	public Tilemap groundTilemap;
@@ -15,14 +17,16 @@ public class GameMaster : MonoBehaviour {
 	public Tilemap skyStuffTilemap;
 	public LevelLayout level;
 	public bool spawning = false;
-	private readonly int levelEndOffset = 20;
-	private readonly int enemyEndOffset = 30;
+	private readonly int levelEndOffset = 15;
+	private readonly int enemyEndOffset = 35;
 	private PlayerMovement player;
 	public GameObject nextLevelButton;
 	public GameObject failLevelButton;
 	public GameObject startGamePanel;
+	public TextMeshProUGUI levelText;
 	public GameObject sun;
 	public GameObject moon;
+	public GameObject sunsetSun;
 	private bool onLevelEnd = false;
 	private bool onStartMenu = true;
 	public Enemy jet;
@@ -37,6 +41,7 @@ public class GameMaster : MonoBehaviour {
 	private IEnumerator CheckForSpawns() {
 		while(spawning) {
 			if(!onLevelEnd) {
+				yield return new WaitForSeconds(level.resendSpeed);
 				float jetRandom = Random.Range(0f, 100f);
 				if(jetRandom < level.planeProbability) {
 					SpawnEnemy(jet);
@@ -100,6 +105,7 @@ public class GameMaster : MonoBehaviour {
 		failLevelButton.SetActive(false);
 		ClearLevel();
 		level = database.levels[currentLevel];
+		levelText.text = (currentLevel + 1).ToString() + "/20";
 		if(level) {
 			GenerateLevel();
 		}
@@ -176,19 +182,38 @@ public class GameMaster : MonoBehaviour {
 		else if(level.theme == LevelTheme.Desert) {
 			tiles = database.desertTiles;
 		}
-		groundTilemap.BoxFill(Vector3Int.zero, tiles[1], -15, -yRange, level.extraLength, 0);
-		groundTilemap.BoxFill(Vector3Int.zero, tiles[0], -15, 0, level.extraLength, 0);
+		//groundTilemap.BoxFill(Vector3Int.zero, tiles[1], -15, -yRange, level.extraLength, 0);
+		//groundTilemap.BoxFill(Vector3Int.zero, tiles[0], -15, 0, level.extraLength, 0);
+		for(int x = -xRange; x < level.extraLength; x++) {
+			for(int y = -yRange; y < 0; y++) {
+				Vector3Int tilePos = new Vector3Int(x, y, 0);
+				groundTilemap.SetTile(tilePos, tiles[1]);
+			}
+		}
+		for(int x = -xRange; x < level.extraLength; x++) {
+			for(int y = 0; y < 1; y++) {
+				Vector3Int tilePos = new Vector3Int(x, y, 0);
+				groundTilemap.SetTile(tilePos, tiles[0]);
+			}
+		}
 		levelEnder.transform.position = new Vector3(level.levelLength - levelEndOffset, 0, 0);
 		enemyEnder.transform.position = new Vector3(level.levelLength - levelEndOffset - enemyEndOffset, 0, 0);
 	}
 	private void GenerateSky() {
-		if(level.time == TimeOfDay.Day || level.time == TimeOfDay.Sunset) {
+		if(level.time == TimeOfDay.Day) {
 			sun.SetActive(true);
 			moon.SetActive(false);
+			sunsetSun.SetActive(false);
+		}
+		else if(level.time == TimeOfDay.Sunset) {
+			sun.SetActive(false);
+			moon.SetActive(false);
+			sunsetSun.SetActive(true);
 		}
 		else {
 			sun.SetActive(false);
 			moon.SetActive(true);
+			sunsetSun.SetActive(false);
 		}
 		skyBackgroundTilemap.BoxFill(Vector3Int.zero, database.timeTiles[(int)level.time], -15, 0, level.extraLength, yRange);
 	}
@@ -201,7 +226,7 @@ public class GameMaster : MonoBehaviour {
 		}
 		else if(level.theme == LevelTheme.Grass) {
 			for(int i = 0; i < level.levelLength / 5; i++) {
-				Vector3 pos = new Vector3(transform.position.x + i * 5, transform.position.y + 1.8f, 0);
+				Vector3 pos = new Vector3(transform.position.x + i * 5, transform.position.y + 1.6f, 0);
 				GameObject tree = ObjectPooler.objectPooler.GetPooledObject("Tree");
 				tree.transform.position = pos;
 				tree.transform.rotation = Quaternion.identity;
