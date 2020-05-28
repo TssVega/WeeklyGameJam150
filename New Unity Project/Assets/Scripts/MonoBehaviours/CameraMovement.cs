@@ -4,7 +4,7 @@ using System.Collections;
 public class CameraMovement : MonoBehaviour {
 
 	private Transform playerTransform;
-	private float lookAhead = 7f;
+	private readonly float lookAhead = 7f;
 
 	private void Start() {
 		playerTransform = FindObjectOfType<PlayerMovement>().transform;

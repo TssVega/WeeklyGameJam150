@@ -23,10 +23,13 @@ public class GameMaster : MonoBehaviour {
 	public GameObject nextLevelButton;
 	public GameObject failLevelButton;
 	public GameObject startGamePanel;
+	public GameObject newsPanel;
 	public TextMeshProUGUI levelText;
 	public GameObject sun;
 	public GameObject moon;
 	public GameObject sunsetSun;
+	public GameObject tutorialPanel;
+	public GameObject endGamePanel;
 	private bool onLevelEnd = false;
 	private bool onStartMenu = true;
 	public Enemy jet;
@@ -34,6 +37,16 @@ public class GameMaster : MonoBehaviour {
 	public Enemy tank;
 	public List<GameObject> currentlyAliveEnemies;
 	private Coroutine spawnChecker;
+	public TextMeshProUGUI screenText;
+	public TextMeshProUGUI anchorSpeech;
+	private string tvUfoSpotted = "UFO SPOTTED!\nIS IT REAL OR FAKE?";
+	private string anchorUfoSpotted = "There is a new video that went viral of a UFO flying through the desert. Experts say it's a manipulated" +
+		" footage so we probably don't have anything to worry about.";
+	private string tvUfoReal = "THE UFO IS REAL";
+	private string anchorUfoReal = "The UFO we have seen turned out to be real. It killed a few soldiers and it's position is currently" +
+		" unknown.";
+	private string tvUfoPanic = "ARE WE DONE?";
+	private string anchorPanic = "The humanity is about to go extinct. We have one last stand against this invasion. We might be doomed.";
 
 	private void Awake() {
 		player = FindObjectOfType<PlayerMovement>();
@@ -78,27 +91,70 @@ public class GameMaster : MonoBehaviour {
 	}
 	private void Start() {
 		startGamePanel.SetActive(true);
+		newsPanel.SetActive(false);
 	}
 	private void Update() {
-		if(onLevelEnd) {
+		if(onLevelEnd && !newsPanel.activeInHierarchy) {
+			if(Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.KeypadEnter)) {
+				CheckNextLevel();
+			}
+		}
+		else if(newsPanel.activeInHierarchy) {
 			if(Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.KeypadEnter)) {
 				SetLevel();
 			}
 		}
-		else if(onStartMenu) {
+		if(onStartMenu) {
 			if(Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.KeypadEnter)) {
 				StartGame();
 				onStartMenu = false;
 			}
+		}		
+		if(Input.GetKeyDown(KeyCode.M)) {
+			SoundManager.audioManager.Mute();
 		}
 	}
 	public void StartGame() {
 		SetLevel();
 		startGamePanel.SetActive(false);
 	}
+	public void CheckNextLevel() {
+		// if the next level is before a cutscene, play it
+		// if there are no next levels end the game
+		if(currentLevel == 1) {
+			// play calm news
+			// an ufo has been spotted but some claim the footage is manipulated
+			// so we shouldn't worry too much
+			tutorialPanel.SetActive(false);
+			newsPanel.SetActive(true);
+			screenText.text = tvUfoSpotted;
+			anchorSpeech.text = anchorUfoSpotted;
+		}
+		else if(currentLevel == 3) {
+			// play nervous news about how aliens killed a bunch of people
+			newsPanel.SetActive(true);
+			newsPanel.GetComponent<Animator>().SetTrigger("GetNervous");
+			screenText.text = tvUfoReal;
+			anchorSpeech.text = anchorUfoReal;
+		}
+		else if(currentLevel == 18) {
+			// play nervous new about how this is the last stand of humanity and we are all doomed
+			newsPanel.SetActive(true);
+			screenText.text = tvUfoPanic;
+			anchorSpeech.text = anchorPanic;
+		}
+		else if(currentLevel == 20) {
+			// end the game
+			endGamePanel.SetActive(true);
+		}
+		else {
+			SetLevel();
+		}
+	}
 	public void SetLevel() {
 		// ClearEnemies();
-		spawning = true;		
+		newsPanel.SetActive(false);
+		spawning = true;
 		onLevelEnd = false;
 		ClearEnemies();
 		nextLevelButton.SetActive(false);

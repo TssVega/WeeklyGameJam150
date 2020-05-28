@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   extraLength: 420
   levelLength: 400
-  theme: 0
+  theme: 1
   time: 1
-  planeProbability: 20
-  tankProbability: 25
-  soldierProbability: 25
+  planeProbability: 25
+  tankProbability: 30
+  soldierProbability: 20
   resendSpeed: 0.1

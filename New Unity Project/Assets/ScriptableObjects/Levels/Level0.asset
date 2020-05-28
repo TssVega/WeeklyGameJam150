@@ -18,5 +18,5 @@ MonoBehaviour:
   time: 0
   planeProbability: 0
   tankProbability: 0
-  soldierProbability: 100
+  soldierProbability: 0
   resendSpeed: 2.5

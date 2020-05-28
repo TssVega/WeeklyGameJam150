@@ -17,6 +17,6 @@ MonoBehaviour:
   theme: 2
   time: 1
   planeProbability: 0
-  tankProbability: 20
+  tankProbability: 0
   soldierProbability: 100
   resendSpeed: 2
